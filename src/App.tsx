@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo, useRef } from "react";
 import CharacterColumns from "./components/CharacterColumns";
 import EpisodesSection from "./components/EpisodesSection";
 import Header from "./components/Header";
@@ -6,6 +6,7 @@ import { CharacterContext } from "./context/characterContext";
 
 const App: React.FC = () => {
   const { character1, character2 } = useContext(CharacterContext);
+  const mounted = useRef<boolean>(false);
 
   const renderEpisodesSection = useMemo(() => {
     if (character1 && character2) {

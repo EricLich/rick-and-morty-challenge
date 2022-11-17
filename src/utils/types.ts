@@ -35,12 +35,12 @@ export type Episode = {
   created: string,
 };
 
-export type ApiResponseFormat = {
+export type ApiResponseFormat<T> = {
   info: {
     count: number,
     next: string,
     pages: number,
     prev: string | null,
   },
-  results: Character[],
+  results: T[],
 };

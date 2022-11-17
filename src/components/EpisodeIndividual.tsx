@@ -1,6 +1,10 @@
 import React from "react";
 
-const EpisodeIndividual = () => {
+interface EpisodeIndividualProps {
+  selectedCharacterName: string;
+}
+
+const EpisodeIndividual: React.FC<EpisodeIndividualProps> = ({ selectedCharacterName }) => {
   return <div>EpisodeIndividual</div>;
 };
 
