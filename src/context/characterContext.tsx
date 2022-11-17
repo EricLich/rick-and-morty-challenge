@@ -22,12 +22,12 @@ const Characters: React.FC<CharactersProps> = ({ children }) => {
   const [character1, setCharacter1] = useState<Character | null>(null);
   const [character2, setCharacter2] = useState<Character | null>(null);
 
-  const selectCharacters = (characterNum: number, character: Character): void => {
-    if (characterNum === 1) {
+  const selectCharacters = (colNum: number, character: Character): void => {
+    if (colNum === 1) {
       setCharacter1((prevCharacter) => (prevCharacter = character));
     }
 
-    if (characterNum === 2) {
+    if (colNum === 2) {
       setCharacter2((prevCharacter) => (prevCharacter = character));
     }
   };
