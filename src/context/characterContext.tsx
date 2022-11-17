@@ -31,8 +31,6 @@ const Characters: React.FC<CharactersProps> = ({ children }) => {
   const [character2, setCharacter2] = useState<Character | null>(null);
   const { episodes, error, loading } = useEpisodes(`${import.meta.env.VITE_API_URL}/episode`);
 
-  console.log(episodes);
-
   const selectCharacters = (colNum: number, character: Character): void => {
     if (colNum === PossibleColumns.COL_ONE && character.id !== character1?.id) {
       setCharacter1((prevCharacter) => (prevCharacter = character));
