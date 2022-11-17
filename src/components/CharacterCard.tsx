@@ -2,6 +2,7 @@ import React, { useContext, useMemo } from "react";
 
 import { Character } from "../utils/types";
 import { CharacterContext, PossibleColumns } from "../context/characterContext";
+import StatusIcon from "./StatusIcon";
 
 interface CharacterCard {
   character: Character;
@@ -23,14 +24,17 @@ const CharacterCard: React.FC<CharacterCard> = ({ character, colNum }) => {
 
   return (
     <div
-      className={`rounded-md overflow-hidden flex justify-start items-center h-[120px] cursor-pointer bg-btnBg ${isSelected}`}
+      className={`rounded-md overflow-hidden flex justify-start items-center h-[120px] cursor-pointer bg-btnBg hover:scale-105 transition-all duration-150 ${isSelected}`}
       onClick={() => selectCharacters(colNum, character)}
     >
-      <img src={character.image} alt={`${character.name} image`} className="h-[120px]" />
-      <div className="h-full p-2 flex flex-col justify-between items-start text-[15px]">
-        <span className="text-main font-sono drop-shadow-fontShadow">{character.name}</span>
-
-        <span className="text-main font-sono drop-shadow-fontShadow">{character.status}</span>
+      <div className="w-[40%] h-full bg-center">
+        <img src={character.image} alt={`${character.name} image`} className="h-full" />
+      </div>
+      <div className=" h-full p-2 flex flex-1 flex-col items-start text-[15px] max-w-[60%]">
+        <div className="w-full text-main font-sono drop-shadow-fontShadow flex items-center gap-2">
+          <span className="w-[70%] truncate hover:text-clip">{character.name}</span>{" "}
+          <StatusIcon status={character.status} />
+        </div>
 
         <span className="text-main font-sono drop-shadow-fontShadow">{character.species}</span>
       </div>

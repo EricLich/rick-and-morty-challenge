@@ -22,7 +22,7 @@ export type Character = {
 export enum CharacterStatus {
   ALIVE = 'Alive',
   DEAD = 'Dead',
-  UNKNOW = 'Unknown',
+  UNKNOW = 'unknown',
 };
 
 export type Episode = {
