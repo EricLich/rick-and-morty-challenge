@@ -8,7 +8,7 @@ const App: React.FC = () => {
   const { character1, character2 } = useContext(CharacterContext);
 
   const renderEpisodesSection = useMemo(() => {
-    if (character1 || character2) {
+    if (character1 && character2) {
       return <EpisodesSection />;
     }
     return <p className="text-main font-sono drop-shadow-fontShadow">Select characters to begin</p>;

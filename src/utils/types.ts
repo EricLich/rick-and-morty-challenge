@@ -1,7 +1,7 @@
 export type Character = {
   id: string,
   name: string,
-  status: string,
+  status: CharacterStatus,
   species: string,
   type: string,
   gender: string,
@@ -17,7 +17,13 @@ export type Character = {
   episodes: string[],
   url: string,
   created: string,
-}
+};
+
+export enum CharacterStatus {
+  ALIVE = 'Alive',
+  DEAD = 'Dead',
+  UNKNOW = 'Unknown',
+};
 
 export type Episode = {
   id: string,
@@ -27,5 +33,14 @@ export type Episode = {
   characters: string[],
   url: string,
   created: string,
-}
+};
 
+export type ApiResponseFormat = {
+  info: {
+    count: number,
+    next: string,
+    pages: number,
+    prev: string | null,
+  },
+  results: Character[],
+};
