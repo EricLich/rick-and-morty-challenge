@@ -16,7 +16,7 @@ module.exports = {
         sono: ['Sono', ...defaultTheme.fontFamily.sans]
       },
       dropShadow: {
-        fontShadow: '0 0 8px rgba(95, 224, 63, .9)',
+        fontShadow: '0 0 10px rgba(95, 224, 63, .9)',
       },
       boxShadow: {
         'border-shadow': '0 0 7px rgba(95, 224, 63, .9)',
