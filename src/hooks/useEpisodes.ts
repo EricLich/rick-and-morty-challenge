@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { customFetch } from "../services/fetch";
+import { getLocalEpisodes, setLocalEpisodes } from "../utils/functions";
 import { ApiResponseFormat, Episode } from "../utils/types";
 
 interface useEpisodeshReturn {
@@ -19,7 +20,8 @@ export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
 
   useEffect(() => {
     const controller = new AbortController();
-    if (mounted.current) {
+    const localEpisodes: Episode[] = getLocalEpisodes();
+    if (mounted.current && localEpisodes.length === 0) {
       setFetchReturn({ ...fetchReturn, loading: true });
       customFetch(fetchUrl).then((res: ApiResponseFormat<Episode>) => {
         const episodeRequests: Promise<ApiResponseFormat<Episode>>[] = [];
@@ -33,11 +35,16 @@ export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
           newRes.forEach((response: ApiResponseFormat<Episode>) => {
             episodes.push(...response.results)
           })
+          setLocalEpisodes(episodes);
           setFetchReturn({ ...fetchReturn, episodes: [...fetchReturn.episodes, ...episodes], loading: false });
         }).catch(err => setFetchReturn({ ...fetchReturn, error: err }));
 
       }).catch(err => setFetchReturn({ ...fetchReturn, error: err }));
       return;
+    }
+
+    if (mounted.current && localEpisodes.length > 0) {
+      setFetchReturn({ ...fetchReturn, episodes: [...fetchReturn.episodes, ...localEpisodes], loading: false });
     }
     return () => {
       controller.abort();
