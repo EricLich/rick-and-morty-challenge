@@ -2,13 +2,15 @@ import { createContext, ReactNode, useState } from "react";
 import { API_URL } from "../api/apiConstants";
 import { useEpisodes } from "../hooks/useEpisodes";
 
-import { ApiResponseFormat, Character, Episode } from "../utils/types";
+import { Character, Episode } from "../utils/types";
 
 export interface CharacterContextValues {
   character1: Character | null;
   character2: Character | null;
+  characterPages: number;
   episodes: Episode[] | null;
   selectCharacters: (colNum: number, character: Character) => void;
+  setCharacterPages: (pageNum: number) => void;
 }
 
 interface CharactersProps {
@@ -24,14 +26,16 @@ export const CharacterContext = createContext<CharacterContextValues>({
   character1: null,
   character2: null,
   episodes: null,
+  characterPages: 0,
   selectCharacters: (colNum: number, character: Character): void => {},
+  setCharacterPages: (pageNum: number) => {},
 });
 
 const Characters: React.FC<CharactersProps> = ({ children }) => {
   const [character1, setCharacter1] = useState<Character | null>(null);
   const [character2, setCharacter2] = useState<Character | null>(null);
+  const [characterPages, setCharacterPages] = useState<number>(0);
   const { episodes, error, loading } = useEpisodes(`${API_URL}/episode`);
-  console.log(episodes);
 
   const selectCharacters = (colNum: number, character: Character): void => {
     if (colNum === PossibleColumns.COL_ONE && character.id !== character1?.id) {
@@ -48,7 +52,16 @@ const Characters: React.FC<CharactersProps> = ({ children }) => {
   };
 
   return (
-    <CharacterContext.Provider value={{ character1, character2, episodes, selectCharacters }}>
+    <CharacterContext.Provider
+      value={{
+        character1,
+        character2,
+        episodes,
+        characterPages,
+        selectCharacters,
+        setCharacterPages,
+      }}
+    >
       {children}
     </CharacterContext.Provider>
   );

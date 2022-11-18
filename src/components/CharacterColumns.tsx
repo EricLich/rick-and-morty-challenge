@@ -2,9 +2,13 @@ import { ApiResponseFormat, Character } from "../utils/types";
 import Column from "./Column";
 import { useFetch } from "../hooks/useFetch";
 import { API_URL } from "../api/apiConstants";
+import { useContext, useEffect } from "react";
+import { CharacterContext } from "../context/characterContext";
 
 const CharacterColumns = () => {
+  const { characterPages, setCharacterPages } = useContext(CharacterContext);
   const { data, error, loading } = useFetch<ApiResponseFormat<Character>>(`${API_URL}/character`);
+  setCharacterPages(data[0]?.info?.pages);
   const characters = data[0]?.results as Character[];
 
   return (

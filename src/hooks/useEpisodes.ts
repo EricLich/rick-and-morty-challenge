@@ -26,7 +26,6 @@ export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
       customFetch(fetchUrl).then((res: ApiResponseFormat<Episode>) => {
         const episodeRequests: Promise<ApiResponseFormat<Episode>>[] = [];
         let episodes: Episode[] = res.results;
-        console.log(res.results);
 
         for (let i = 2; i <= res.info.pages; i++) {
           episodeRequests.push(customFetch(`${API_URL}/episode?page=${i}`))
