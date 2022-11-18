@@ -31,6 +31,7 @@ const Characters: React.FC<CharactersProps> = ({ children }) => {
   const [character1, setCharacter1] = useState<Character | null>(null);
   const [character2, setCharacter2] = useState<Character | null>(null);
   const { episodes, error, loading } = useEpisodes(`${API_URL}/episode`);
+  console.log(episodes);
 
   const selectCharacters = (colNum: number, character: Character): void => {
     if (colNum === PossibleColumns.COL_ONE && character.id !== character1?.id) {

@@ -12,7 +12,6 @@ interface useEpisodeshReturn {
 }
 
 export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
-  const mounted = useRef<boolean>(false);
   const [fetchReturn, setFetchReturn] = useState<useEpisodeshReturn>({
     episodes: [],
     error: undefined,
@@ -20,13 +19,14 @@ export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
   })
 
   useEffect(() => {
-    const controller = new AbortController();
     const localEpisodes: Episode[] = getLocalEpisodes();
-    if (mounted.current && localEpisodes.length === 0) {
+    const abortController = new AbortController();
+    if (localEpisodes.length === 0) {
       setFetchReturn({ ...fetchReturn, loading: true });
       customFetch(fetchUrl).then((res: ApiResponseFormat<Episode>) => {
         const episodeRequests: Promise<ApiResponseFormat<Episode>>[] = [];
         let episodes: Episode[] = res.results;
+        console.log(res.results);
 
         for (let i = 2; i <= res.info.pages; i++) {
           episodeRequests.push(customFetch(`${API_URL}/episode?page=${i}`))
@@ -44,12 +44,11 @@ export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
       return;
     }
 
-    if (mounted.current && localEpisodes.length > 0) {
+    if (localEpisodes.length > 0) {
       setFetchReturn({ ...fetchReturn, episodes: [...fetchReturn.episodes, ...localEpisodes], loading: false });
     }
     return () => {
-      controller.abort();
-      mounted.current = true;
+      abortController.abort();
     }
   }, []);
 

@@ -8,7 +8,6 @@ interface useFecthReturn<T> {
 }
 
 export const useFetch = <T>(fetchUrl: string): useFecthReturn<T> => {
-  const mounted = useRef<boolean>(false);
   const [fetchReturn, setFetchReturn] = useState<useFecthReturn<T>>({
     data: [],
     error: undefined,
@@ -16,17 +15,14 @@ export const useFetch = <T>(fetchUrl: string): useFecthReturn<T> => {
   })
 
   useEffect(() => {
-    const controller = new AbortController();
-    if (mounted.current) {
-      setFetchReturn({ ...fetchReturn, loading: true });
-      customFetch(fetchUrl).then(res => {
-        setFetchReturn({ ...fetchReturn, data: [...fetchReturn.data, res], loading: false });
-      }).catch(err => setFetchReturn({ ...fetchReturn, error: err }));
-      return;
-    }
+    const abortController = new AbortController();
+    setFetchReturn({ ...fetchReturn, loading: true });
+    customFetch(fetchUrl).then(res => {
+      setFetchReturn({ ...fetchReturn, data: [...fetchReturn.data, res], loading: false });
+    }).catch(err => setFetchReturn({ ...fetchReturn, error: err }));
+
     return () => {
-      controller.abort();
-      mounted.current = true;
+      abortController.abort();
     }
   }, []);
 
