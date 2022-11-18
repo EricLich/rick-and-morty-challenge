@@ -35,12 +35,14 @@ const CharacterCard: React.FC<CharacterCard> = ({ character, colNum }) => {
         <img
           src={character.image}
           alt={`${character.name} image`}
-          className="h-full bg-no-repeat bg-cover "
+          className="h-full bg-no-repeat bg-cover w-full"
         />
       </div>
       <div className="h-full p-2 flex flex-1 flex-col items-start text-[15px] max-w-[60%]">
         <div className="w-full text-main font-sono drop-shadow-fontShadow flex items-center gap-2">
-          <span className="w-[70%] truncate hover:text-clip">{character.name}</span>{" "}
+          <span className="w-[70%] truncate hover:text-clip" title={character.name}>
+            {character.name}
+          </span>{" "}
           <StatusIcon status={character.status} />
         </div>
 
