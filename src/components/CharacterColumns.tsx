@@ -1,11 +1,10 @@
 import { ApiResponseFormat, Character } from "../utils/types";
 import Column from "./Column";
 import { useFetch } from "../hooks/useFetch";
+import { API_URL } from "../api/apiConstants";
 
 const CharacterColumns = () => {
-  const { data, error, loading } = useFetch<ApiResponseFormat<Character>>(
-    `${import.meta.env.VITE_API_URL}/character`
-  );
+  const { data, error, loading } = useFetch<ApiResponseFormat<Character>>(`${API_URL}/character`);
   const characters = data[0]?.results as Character[];
 
   return (

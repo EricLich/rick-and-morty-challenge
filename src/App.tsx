@@ -6,7 +6,6 @@ import { CharacterContext } from "./context/characterContext";
 
 const App: React.FC = () => {
   const { character1, character2 } = useContext(CharacterContext);
-  const mounted = useRef<boolean>(false);
 
   const renderEpisodesSection = useMemo(() => {
     if (character1 && character2) {

@@ -11,9 +11,9 @@ const EpisodesSection = () => {
     if (character1 && character2) {
       return (
         <>
-          <EpisodeIndividual selectedCharacter={character1} />
+          <EpisodeIndividual selectedCharacter={character1} otherCharacterId={character2.id} />
           <SharedEpisodes />
-          <EpisodeIndividual selectedCharacter={character2} />
+          <EpisodeIndividual selectedCharacter={character2} otherCharacterId={character1.id} />
         </>
       );
     }

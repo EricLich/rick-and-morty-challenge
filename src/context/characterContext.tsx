@@ -1,4 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
+import { API_URL } from "../api/apiConstants";
 import { useEpisodes } from "../hooks/useEpisodes";
 
 import { ApiResponseFormat, Character, Episode } from "../utils/types";
@@ -29,7 +30,7 @@ export const CharacterContext = createContext<CharacterContextValues>({
 const Characters: React.FC<CharactersProps> = ({ children }) => {
   const [character1, setCharacter1] = useState<Character | null>(null);
   const [character2, setCharacter2] = useState<Character | null>(null);
-  const { episodes, error, loading } = useEpisodes(`${import.meta.env.VITE_API_URL}/episode`);
+  const { episodes, error, loading } = useEpisodes(`${API_URL}/episode`);
 
   const selectCharacters = (colNum: number, character: Character): void => {
     if (colNum === PossibleColumns.COL_ONE && character.id !== character1?.id) {

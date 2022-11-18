@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { API_URL } from "../api/apiConstants";
 
 import { customFetch } from "../services/fetch";
 import { getLocalEpisodes, setLocalEpisodes } from "../utils/functions";
@@ -28,7 +29,7 @@ export const useEpisodes = (fetchUrl: string): useEpisodeshReturn => {
         let episodes: Episode[] = res.results;
 
         for (let i = 2; i <= res.info.pages; i++) {
-          episodeRequests.push(customFetch(`${import.meta.env.VITE_API_URL}/episode?page=${i}`))
+          episodeRequests.push(customFetch(`${API_URL}/episode?page=${i}`))
         }
 
         Promise.all(episodeRequests).then((newRes: ApiResponseFormat<Episode>[]) => {
