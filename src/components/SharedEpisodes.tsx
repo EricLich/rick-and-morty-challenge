@@ -34,11 +34,13 @@ const SharedEpisodes = () => {
         </h3>
       </div>
       {sharedEpisodes.length > 0 && (
-        <div className="p-4 !overflow-y-auto">
+        <div className="p-4 !overflow-y-auto w-full">
           {sharedEpisodes.map((episode) => (
             <p
               key={episode.id}
-              className="text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left border-b border-main pt-2 pb-4 w-full"
+              className={`text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left pt-2 pb-4 w-full ${
+                sharedEpisodes.length > 1 && "border-b border-main "
+              } `}
             >
               {episode.episode} - {episode.name} - {episode.air_date}
             </p>

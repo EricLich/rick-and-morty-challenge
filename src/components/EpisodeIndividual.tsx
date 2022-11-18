@@ -47,7 +47,9 @@ const EpisodeIndividual: React.FC<EpisodeIndividualProps> = ({
           {aloneEpisodes.map((episode) => (
             <p
               key={episode.id}
-              className="text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left border-b border-main pt-2 pb-4"
+              className={`text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left ${
+                aloneEpisodes.length > 1 && "border-b border-main"
+              } pt-2 pb-4`}
             >
               {episode.episode} - {episode.name} - {episode.air_date}
             </p>

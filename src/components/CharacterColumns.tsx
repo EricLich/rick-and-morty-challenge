@@ -19,7 +19,7 @@ const CharacterColumns = () => {
   }
 
   return (
-    <div className="text-white w-[90%] h-[50%] max-w-[1300px] mx-auto mt-8 mb-8 flex overflow-y-auto gap-5">
+    <div className="text-white w-[90%] h-[50%] max-w-[1300px] mx-auto mt-8 mb-8 flex overflow-y-auto overflow-x-hidden gap-5">
       <Column colNum={1} loading={loading} />
       <Column colNum={2} loading={loading} />
     </div>

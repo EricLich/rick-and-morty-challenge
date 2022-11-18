@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       colors: {
         main: '#5fe03f',
-        btnBg: 'rgb(17, 19, 8, .9);',
+        btnBg: 'rgb(17, 19, 8, .9)',
         selectedBtnBg: 'rgb(17, 90, 8, .9)',
         btnBorder: '#1f590e',
       },
