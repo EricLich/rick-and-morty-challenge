@@ -30,7 +30,7 @@ const SharedEpisodes = () => {
     <div className="w-[40%] flex flex-col justify-start items-start border border-main h-full shadow-border-shadow rounded-md">
       <div className="w-full flex items-center justify-center p-4 border-b border-main">
         <h3 className="text-main font-sono drop-shadow-fontShadow text-[16px] text-center">
-          Character #{character1?.id} & Character #{character2?.id} - Shared Episodes
+          Character #{character1?.id} & #{character2?.id} - Shared Episodes
         </h3>
       </div>
       {sharedEpisodes.length > 0 && (
@@ -38,7 +38,7 @@ const SharedEpisodes = () => {
           {sharedEpisodes.map((episode) => (
             <p
               key={episode.id}
-              className="text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left"
+              className="text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left border-b border-main pt-2 pb-4 w-full"
             >
               {episode.episode} - {episode.name} - {episode.air_date}
             </p>

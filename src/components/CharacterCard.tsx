@@ -32,7 +32,11 @@ const CharacterCard: React.FC<CharacterCard> = ({ character, colNum }) => {
       onClick={() => selectCharacters(colNum, character)}
     >
       <div className="w-[40%] h-full bg-center">
-        <img src={character.image} alt={`${character.name} image`} className="h-full" />
+        <img
+          src={character.image}
+          alt={`${character.name} image`}
+          className="h-full bg-no-repeat bg-cover "
+        />
       </div>
       <div className="h-full p-2 flex flex-1 flex-col items-start text-[15px] max-w-[60%]">
         <div className="w-full text-main font-sono drop-shadow-fontShadow flex items-center gap-2">

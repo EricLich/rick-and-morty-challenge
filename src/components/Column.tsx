@@ -54,7 +54,7 @@ const Column: React.FC<ColumnProps> = ({ colNum, loading }) => {
           renderCharacters
         )}
       </div>
-      <div className="absolute w-[65%] flex justify-center bottom-2 left-0 right-0 ml-auto mr-auto bg-selectedBtnBg rounded-md p-2">
+      <div className="absolute w-[270px] flex justify-center items-center bottom-2 left-0 right-0 ml-auto mr-auto bg-selectedBtnBg rounded-md pb-1">
         {!loading && characterPages > 0 && (
           <Pagination
             count={characterPages}
@@ -62,6 +62,7 @@ const Column: React.FC<ColumnProps> = ({ colNum, loading }) => {
             color="standard"
             shape="rounded"
             onChange={handlePageChange}
+            size={"small"}
           />
         )}
       </div>

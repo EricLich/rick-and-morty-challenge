@@ -37,7 +37,7 @@ const EpisodeIndividual: React.FC<EpisodeIndividualProps> = ({
 
   return (
     <div className="w-[30%] flex flex-col justify-start items-start border border-main h-full shadow-border-shadow rounded-md">
-      <div className="w-full flex items-center justify-center border-b border-main p-[32px]">
+      <div className="w-full flex items-center justify-center border-b border-main p-4">
         <h3 className="text-main font-sono drop-shadow-fontShadow text-[16px] text-center">
           Character #{selectedCharacter.id} - Only Episodes
         </h3>
@@ -47,7 +47,7 @@ const EpisodeIndividual: React.FC<EpisodeIndividualProps> = ({
           {aloneEpisodes.map((episode) => (
             <p
               key={episode.id}
-              className="text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left"
+              className="text-main font-sono drop-shadow-fontShadow text-[16px] mb-2 text-left border-b border-main pt-2 pb-4"
             >
               {episode.episode} - {episode.name} - {episode.air_date}
             </p>
