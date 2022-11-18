@@ -26,21 +26,21 @@ const CharacterCard: React.FC<CharacterCard> = ({ character, colNum }) => {
 
   return (
     <div
-      className={`rounded-md overflow-hidden flex justify-start items-center h-[120px] cursor-pointer bg-btnBg hover:scale-105 transition-all duration-150 ${
+      className={`rounded-md overflow-hidden flex justify-start items-center md:h-[90px] lg:h-[120px] cursor-pointer bg-btnBg hover:scale-105 transition-all duration-150 ${
         isSelected && "!bg-selectedBtnBg"
       }`}
       onClick={() => selectCharacters(colNum, character)}
     >
-      <div className="w-[40%] h-full bg-center">
+      <div className="md:w-[30%] lg:w-[40%] h-full bg-center">
         <img
           src={character.image}
           alt={`${character.name} image`}
           className="h-full bg-no-repeat bg-cover w-full"
         />
       </div>
-      <div className="h-full p-2 flex flex-1 flex-col items-start text-[15px] max-w-[60%]">
-        <div className="w-full text-main font-sono drop-shadow-fontShadow flex items-center gap-2">
-          <span className="w-[70%] truncate hover:text-clip" title={character.name}>
+      <div className="h-full md:p-3 lg:p-2 flex flex-1 flex-col items-start text-[15px] md:max-w-[70%] lg:max-w-[60%]">
+        <div className="w-full text-main font-sono drop-shadow-fontShadow flex items-center justify-between gap-2">
+          <span className="w-[70%] flex-1 truncate hover:text-clip" title={character.name}>
             {character.name}
           </span>{" "}
           <StatusIcon status={character.status} />

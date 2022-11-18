@@ -44,7 +44,7 @@ const Column: React.FC<ColumnProps> = ({ colNum, loading }) => {
   return (
     <div className="relative w-[50%]">
       <div
-        className={`p-4 border border-main h-full shadow-border-shadow rounded-md grid grid-cols-2 gap-3 overflow-y-auto content-start ${
+        className={`p-4 border border-main h-full shadow-border-shadow rounded-md grid md:grid-cols-1 lg:grid-cols-2 gap-3 overflow-y-auto content-start ${
           loadingNewPages || loading ? "!grid-cols-none !content-center" : ""
         }`}
       >

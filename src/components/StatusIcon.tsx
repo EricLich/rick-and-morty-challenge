@@ -1,7 +1,7 @@
 import React from "react";
 import { CharacterStatus } from "../utils/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faSkullCrossbones, faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { faHeartPulse, faSkullCrossbones, faQuestion } from "@fortawesome/free-solid-svg-icons";
 
 interface StatusIcon {
   status: CharacterStatus;
@@ -10,7 +10,7 @@ interface StatusIcon {
 const StatusIcon: React.FC<StatusIcon> = ({ status }) => {
   const renderStatusIcon = () => {
     if (status === CharacterStatus.ALIVE) {
-      return <FontAwesomeIcon icon={faHeart} />;
+      return <FontAwesomeIcon icon={faHeartPulse} />;
     }
 
     if (status === CharacterStatus.DEAD) {
