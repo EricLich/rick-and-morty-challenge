@@ -5,6 +5,7 @@ import { useEpisodes } from "../hooks/useEpisodes";
 import { Character, Episode } from "../utils/types";
 
 export interface CharacterContextValues {
+  allCharacters: Map<number, Character[]>;
   character1: Character | null;
   character2: Character | null;
   characterPages: number;
@@ -23,6 +24,7 @@ export enum PossibleColumns {
 }
 
 export const CharacterContext = createContext<CharacterContextValues>({
+  allCharacters: new Map(),
   character1: null,
   character2: null,
   episodes: null,
@@ -35,6 +37,7 @@ const Characters: React.FC<CharactersProps> = ({ children }) => {
   const [character1, setCharacter1] = useState<Character | null>(null);
   const [character2, setCharacter2] = useState<Character | null>(null);
   const [characterPages, setCharacterPages] = useState<number>(0);
+  const allCharacters = new Map<number, Character[]>();
   const { episodes, error, loading } = useEpisodes(`${API_URL}/episode`);
 
   const selectCharacters = (colNum: number, character: Character): void => {
@@ -60,6 +63,7 @@ const Characters: React.FC<CharactersProps> = ({ children }) => {
         characterPages,
         selectCharacters,
         setCharacterPages,
+        allCharacters,
       }}
     >
       {children}
