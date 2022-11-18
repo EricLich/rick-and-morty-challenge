@@ -4,7 +4,7 @@
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px !important;
+  width: 8px !important;
   transition: all .5s;
   box-shadow: 0 0 7px rgba(95, 224, 63, .9);
 }

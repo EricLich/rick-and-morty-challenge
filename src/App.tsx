@@ -15,7 +15,7 @@ const App: React.FC = () => {
   }, [character1, character2]);
 
   return (
-    <div className="w-screen h-screen bg-black text-2xl font-sono-400 overflow-auto flex flex-col items-center">
+    <div className="w-screen min-h-screen h-auto md:h-screen bg-black text-2xl font-sono-400 overflow-auto flex flex-col items-center">
       <Header />
       <CharacterColumns />
       {renderEpisodesSection}
