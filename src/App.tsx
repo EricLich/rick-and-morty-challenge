@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useRef } from "react";
+import { useContext, useMemo } from "react";
 import CharacterColumns from "./components/CharacterColumns";
 import EpisodesSection from "./components/EpisodesSection";
 import Header from "./components/Header";
@@ -11,7 +11,11 @@ const App: React.FC = () => {
     if (character1 && character2) {
       return <EpisodesSection />;
     }
-    return <p className="text-main font-sono drop-shadow-fontShadow">Select characters to begin</p>;
+    return (
+      <p className="text-base md:text-2xl text-main font-sono drop-shadow-fontShadow">
+        Select characters to begin
+      </p>
+    );
   }, [character1, character2]);
 
   return (
