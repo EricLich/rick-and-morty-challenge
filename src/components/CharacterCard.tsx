@@ -26,7 +26,7 @@ const CharacterCard: React.FC<CharacterCard> = ({ character, colNum }) => {
 
   return (
     <div
-      className={`rounded-md overflow-hidden flex justify-start items-center h-[65px] md:h-[90px] lg:h-[120px] cursor-pointer bg-btnBg hover:scale-105 transition-all duration-150 ${
+      className={`rounded-md overflow-hidden flex justify-start items-center h-[65px] md:h-[90px] lg:h-[120px] cursor-pointer bg-btnBg lg:hover:scale-105 transition-all duration-150 ${
         isSelected && "!bg-selectedBtnBg"
       }`}
       onClick={() => selectCharacters(colNum, character)}
