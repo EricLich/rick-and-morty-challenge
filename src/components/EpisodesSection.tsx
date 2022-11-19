@@ -20,7 +20,7 @@ const EpisodesSection = () => {
   }, [character1, character2]);
 
   return (
-    <div className="w-[90%] h-auto max-h-[35%] max-w-[1300px] mx-auto mb-6 flex justify-between items-center gap-2">
+    <div className="w-[95%] md:w-[90%] h-auto max-h-[35%] max-w-[1300px] mx-auto mb-6 flex flex-col md:flex-row justify-between items-center gap-5 md:gap-2">
       {renderEpisodesSection}
     </div>
   );

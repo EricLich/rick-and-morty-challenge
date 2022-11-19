@@ -27,14 +27,14 @@ const SharedEpisodes = () => {
   }, [character1, character2]);
 
   return (
-    <div className="w-[40%] flex flex-col justify-start items-start border border-main h-full shadow-border-shadow rounded-md">
+    <div className="order-1 md:order-none w-full md:w-[40%] flex flex-col justify-start items-start border border-main h-auto max-h-[300px] md:h-full shadow-border-shadow rounded-md">
       <div className="w-full flex items-center justify-center p-2 lg:p-4 border-b border-main">
         <h3 className="text-main font-sono drop-shadow-fontShadow text-[14px] md:text-[14px] lg:text-[16px] text-center">
           Character #{character1?.id} & #{character2?.id} - Shared Episodes
         </h3>
       </div>
       {sharedEpisodes.length > 0 && (
-        <div className="p-2 md:p-3 lg:p-4 !overflow-y-auto w-full">
+        <div className="p-2 md:p-3 lg:p-4 !overflow-y-auto overflow-x-hidden w-full">
           {sharedEpisodes.map((episode) => (
             <p
               key={episode.id}

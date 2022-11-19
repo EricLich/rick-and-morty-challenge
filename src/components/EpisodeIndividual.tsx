@@ -36,7 +36,7 @@ const EpisodeIndividual: React.FC<EpisodeIndividualProps> = ({
   }, [selectedCharacter, otherCharacterId]);
 
   return (
-    <div className="w-[30%] flex flex-col justify-start items-start border border-main h-full shadow-border-shadow rounded-md">
+    <div className="order-2 md:order-none w-full md:w-[30%] flex flex-col justify-start items-start border border-main h-auto max-h-[300px] md:h-full shadow-border-shadow rounded-md">
       <div className="w-full flex items-center justify-center border-b border-main p-2 lg:p-4">
         <h3 className="text-main font-sono drop-shadow-fontShadow text-[14px] md:text-[14px] lg:text-[16px] text-center">
           Character #{selectedCharacter.id} - Only Episodes
